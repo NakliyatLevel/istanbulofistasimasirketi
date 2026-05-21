@@ -254,7 +254,7 @@ export default async function HomePage() {
       )}
       <div className="min-h-screen">
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection settings={settings} />
 
       {/* Logo Marquee - Referanslar (TrustBar Üstünde) */}
       <LogoMarquee
@@ -263,7 +263,7 @@ export default async function HomePage() {
       />
 
       {/* Trust Bar */}
-      <TrustBar />
+      <TrustBar whatsapp={settings.whatsapp} />
 
       {/* Services Section - Dinamik */}
       {services.length > 0 && (

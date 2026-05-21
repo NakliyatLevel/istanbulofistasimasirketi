@@ -452,7 +452,7 @@ npm install next-sitemap
 ```javascript
 // next-sitemap.config.js
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://istanbulofistasimasirketi.com.tr',
   generateRobotsTxt: true,
   exclude: ['/karakar/*', '/api/*'],
 }

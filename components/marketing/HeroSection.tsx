@@ -1,10 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import {
   ShieldCheck,
-  Award,
   MapPin,
   Instagram,
   ArrowRight,
@@ -12,10 +11,11 @@ import {
   FileText,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-export default function HeroSection() {
-  const [mounted, setMounted] = useState(false)
-  const [activeCity, setActiveCity] = useState(0)
-  const [settings, setSettings] = useState<any>({})
+interface HeroSectionProps {
+  settings: Record<string, string>
+}
+
+export default function HeroSection({ settings }: HeroSectionProps) {
   const [heroForm, setHeroForm] = useState({
     fromCity: '',
     toCity: '',
@@ -26,29 +26,6 @@ export default function HeroSection() {
   const [heroSubmitLoading, setHeroSubmitLoading] = useState(false)
   const [heroSubmitMessage, setHeroSubmitMessage] = useState('')
 
-  const cities = ['İstanbul', 'Ankara', 'İzmir', 'Bursa', 'Antalya']
-
-  useEffect(() => {
-    setMounted(true)
-    
-    fetch('/api/settings')
-      .then((res) => res.json())
-      .then((data) => {
-        setSettings(data)
-      })
-      .catch(() => {})
-
-    const cityTimer = setInterval(() => {
-      setActiveCity(prev => (prev + 1) % cities.length)
-    }, 3000)
-
-    return () => {
-      clearInterval(cityTimer)
-    }
-  }, [cities.length])
-
-  if (!mounted) return null
-
   const isHeroPriceReady =
     Boolean(heroForm.fromCity.trim()) &&
     Boolean(heroForm.toCity.trim()) &&
@@ -57,14 +34,14 @@ export default function HeroSection() {
     Boolean(heroForm.phone.trim())
 
   const heroRoomKey = heroForm.roomType.replace('+', '_')
-  const heroPriceMinRaw = settings[`hero_price_${heroRoomKey}_min`]
-  const heroPriceMaxRaw = settings[`hero_price_${heroRoomKey}_max`]
+  const heroPriceMinRaw = settings?.[`hero_price_${heroRoomKey}_min`]
+  const heroPriceMaxRaw = settings?.[`hero_price_${heroRoomKey}_max`]
   const heroPriceMin = Number.parseInt((heroPriceMinRaw || '').toString().replace(/\./g, '').replace(/\s/g, ''), 10)
   const heroPriceMax = Number.parseInt((heroPriceMaxRaw || '').toString().replace(/\./g, '').replace(/\s/g, ''), 10)
   const hasHeroPriceRange = Number.isFinite(heroPriceMin) && Number.isFinite(heroPriceMax) && heroPriceMin > 0 && heroPriceMax > 0
 
   const heroWhatsappHref = (() => {
-    if (!settings.whatsapp) return ''
+    if (!settings?.whatsapp) return ''
     const whatsappNumber = settings.whatsapp.toString().replace(/\s/g, '')
     const text =
       `Hızlı Teklif Talebi%0A` +
@@ -158,10 +135,11 @@ export default function HeroSection() {
                           <Image
                             src="/trust.webp"
                             alt="Şikayet yok güven rozeti"
-                            width={430}
-                            height={414}
+                            width={96}
+                            height={96}
                             priority
-                            className="w-full h-auto"
+                            sizes="(min-width: 1024px) 90px, (min-width: 768px) 78px, 56px"
+                            className="h-auto w-[56px] md:w-[78px] lg:w-[90px]"
                           />
                         </div>
                       </div>

@@ -1,9 +1,11 @@
 import Link from 'next/link'
-import { getSiteSettings } from '@/lib/settings'
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, MessageCircle } from 'lucide-react'
 
-export default async function Footer() {
-  const settings = await getSiteSettings()
+interface FooterProps {
+  settings: Record<string, string>
+}
+
+export default function Footer({ settings }: FooterProps) {
 
   return (
     <footer className="bg-foreground text-white">
@@ -20,17 +22,35 @@ export default async function Footer() {
             </p>
             <div className="flex items-center gap-3">
               {settings.facebook && (
-                <a href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-secondary flex items-center justify-center transition">
+                <a
+                  href={settings.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-secondary flex items-center justify-center transition"
+                  aria-label="Facebook"
+                >
                   <Facebook className="w-4 h-4" />
                 </a>
               )}
               {settings.instagram && (
-                <a href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-secondary flex items-center justify-center transition">
+                <a
+                  href={settings.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-secondary flex items-center justify-center transition"
+                  aria-label="Instagram"
+                >
                   <Instagram className="w-4 h-4" />
                 </a>
               )}
               {settings.twitter && (
-                <a href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-secondary flex items-center justify-center transition">
+                <a
+                  href={settings.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-secondary flex items-center justify-center transition"
+                  aria-label="Twitter"
+                >
                   <Twitter className="w-4 h-4" />
                 </a>
               )}

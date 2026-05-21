@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: settings.seo_title || settings.site_title,
     description: settings.seo_description,
     keywords: settings.seo_keywords,
-    metadataBase: new URL(settings.domain || 'http://localhost:3000'),
+    metadataBase: new URL(settings.domain || 'https://istanbulofistasimasirketi.com.tr'),
     
     // Open Graph
     openGraph: {
@@ -99,7 +99,7 @@ import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/db'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://istanbulofistasimasirketi.com.tr'
   
   // Static pages
   const staticPages = [
@@ -155,7 +155,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://istanbulofistasimasirketi.com.tr'
   
   return {
     rules: [

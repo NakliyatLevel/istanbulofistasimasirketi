@@ -595,7 +595,7 @@ async function main() {
   const settings = [
     { key: 'site_title', value: 'Evden Eve Nakliyat' },
     { key: 'company_name', value: 'Nakliyat Ltd.' },
-    { key: 'domain', value: 'localhost:3000' },
+    { key: 'domain', value: 'https://istanbulofistasimasirketi.com.tr' },
   ]
 
   for (const setting of settings) {

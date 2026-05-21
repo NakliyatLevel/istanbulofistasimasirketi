@@ -89,7 +89,9 @@ Detaylı dokümanlar `/docs` klasöründe:
 
 ## 🔐 Admin Panel
 
-**URL:** `http://localhost:3000/karakar`
+**URL (Production):** `https://istanbulofistasimasirketi.com.tr/karakar`
+
+**URL (Local):** `http://localhost:3000/karakar`
 
 **İlk Giriş:**
 - Email: `admin@example.com`
@@ -105,7 +107,7 @@ DATABASE_URL="postgresql://..."
 
 # Auth
 NEXTAUTH_SECRET="..."
-NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_URL="https://istanbulofistasimasirketi.com.tr"
 
 # SMTP
 SMTP_HOST="smtp.gmail.com"
@@ -120,8 +122,10 @@ GOOGLE_MAPS_API_KEY="..."
 ADMIN_EMAIL="admin@yourdomain.com"
 
 # Site URL
-NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+NEXT_PUBLIC_SITE_URL="https://istanbulofistasimasirketi.com.tr"
 ```
+
+> Geliştirme ortamında `NEXTAUTH_URL` ve `NEXT_PUBLIC_SITE_URL` değerlerini `http://localhost:<port>` olarak geçici şekilde ezebilirsiniz.
 
 ## 🚀 Deployment
 

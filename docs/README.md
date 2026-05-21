@@ -109,7 +109,7 @@ DATABASE_URL="postgresql://user:password@localhost:5432/nakliyat"
 
 # Auth
 NEXTAUTH_SECRET="your-secret-key-here"
-NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_URL="https://istanbulofistasimasirketi.com.tr"
 
 # SMTP (Gmail)
 SMTP_HOST="smtp.gmail.com"
@@ -124,8 +124,10 @@ GOOGLE_MAPS_API_KEY="your-google-maps-api-key"
 ADMIN_EMAIL="admin@yourdomain.com"
 
 # Site URL
-NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+NEXT_PUBLIC_SITE_URL="https://istanbulofistasimasirketi.com.tr"
 ```
+
+> Lokal geliştirmede `NEXTAUTH_URL` ve `NEXT_PUBLIC_SITE_URL` değerlerini geçici olarak `http://localhost:<port>` şeklinde ayarlayabilirsiniz.
 
 ### 4. Veritabanını Hazırlayın
 
@@ -211,7 +213,9 @@ Tarayıcınızda `http://localhost:3000` adresini açın.
 
 ## 🔐 Admin Panel
 
-Admin panele erişim: `http://localhost:3000/karakar`
+Admin panele erişim (production): `https://istanbulofistasimasirketi.com.tr/karakar`
+
+Admin panele erişim (local): `http://localhost:3000/karakar`
 
 **İlk admin kullanıcısı:**
 - Email: `admin@example.com`

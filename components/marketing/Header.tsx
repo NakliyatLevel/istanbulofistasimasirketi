@@ -5,20 +5,14 @@ import Image from 'next/image'
 import { Phone, Mail, Menu, ChevronDown, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { MobileMenu } from './MobileMenu'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-export default function Header() {
-  const [settings, setSettings] = useState<any>({})
+interface HeaderProps {
+  settings: Record<string, string>
+}
+
+export default function Header({ settings }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  useEffect(() => {
-    fetch('/api/settings')
-      .then((res) => res.json())
-      .then((data) => {
-        setSettings(data)
-      })
-      .catch(() => {})
-  }, [])
 
   return (
     <>
@@ -304,8 +298,9 @@ export default function Header() {
                 Teklif Al
               </Button>
             </Link>
-            <button 
+            <button
               className="md:hidden"
+              aria-label="Mobil menüyü aç"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <Menu className="w-6 h-6" />

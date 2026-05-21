@@ -1,26 +1,15 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import { Phone, MessageCircle } from 'lucide-react'
 
-export function MobileBottomBar() {
-  const [phone, setPhone] = useState<string | null>(null)
-  const [whatsapp, setWhatsapp] = useState<string | null>(null)
+interface MobileBottomBarProps {
+  phone?: string | null
+  whatsapp?: string | null
+}
 
-  useEffect(() => {
-    fetch('/api/settings')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.phone) setPhone(data.phone)
-        if (data.whatsapp) setWhatsapp(data.whatsapp)
-      })
-      .catch(() => {})
-  }, [])
-
+export function MobileBottomBar({ phone, whatsapp }: MobileBottomBarProps) {
   if (!phone && !whatsapp) return null
 
   const whatsappNumber = whatsapp?.replace(/[^0-9]/g, '')
-  const whatsappUrl = `https://wa.me/${whatsappNumber}`
+  const whatsappUrl = whatsappNumber ? `https://wa.me/${whatsappNumber}` : null
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 flex md:hidden border-t border-gray-200 bg-white shadow-[0_-4px_16px_rgba(0,0,0,0.08)]">
@@ -33,7 +22,7 @@ export function MobileBottomBar() {
           <span>Telefon</span>
         </a>
       )}
-      {whatsapp && (
+      {whatsapp && whatsappUrl && (
         <a
           href={whatsappUrl}
           target="_blank"

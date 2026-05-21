@@ -26,7 +26,7 @@ async function main() {
   const siteSettings = [
     { key: 'site_title', value: 'Evden Eve Nakliyat' },
     { key: 'company_name', value: 'Çolak Nakliyat' },
-    { key: 'domain', value: 'localhost:3000' },
+    { key: 'domain', value: 'https://istanbulofistasimasirketi.com.tr' },
     { key: 'phone', value: '+90 555 123 4567' },
     { key: 'email', value: 'info@example.com' },
     { key: 'address', value: 'İstanbul, Türkiye' },

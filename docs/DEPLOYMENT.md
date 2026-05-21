@@ -380,7 +380,7 @@ sudo nano /etc/nginx/sites-available/nakliyat
 ```nginx
 server {
     listen 80;
-    server_name yourdomain.com www.yourdomain.com;
+    server_name istanbulofistasimasirketi.com.tr www.istanbulofistasimasirketi.com.tr;
 
     location / {
         proxy_pass http://localhost:3000;
