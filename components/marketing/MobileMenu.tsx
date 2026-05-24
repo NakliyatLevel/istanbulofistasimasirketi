@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { X, ChevronDown, ChevronUp } from 'lucide-react'
+import { SERVICE_MENU_GROUPS } from '@/lib/service-menu'
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -106,48 +107,26 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </button>
               {isHizmetlerOpen && (
                 <ul className="ml-4 mt-1 space-y-1 border-l-2 border-primary/20 pl-2">
-                  <li className="py-1 px-3 text-xs font-semibold text-primary uppercase tracking-wide">Bireysel</li>
-                  <li>
-                    <Link href="/hizmet/ev-tasima" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700">
-                      Ev Taşıma
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/hizmet/villa-tasimaciligi" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700">
-                      Villa Taşımacılığı
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/hizmet/parca-esya-tasimaciligi" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700">
-                      Parça Eşya Taşımacılığı
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/hizmet/sehir-ici-nakliyat" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700">
-                      Şehir İçi Nakliyat
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/hizmet/sehirler-arasi-nakliyat" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700">
-                      Şehirler Arası Nakliyat
-                    </Link>
-                  </li>
-                  <li className="py-1 px-3 text-xs font-semibold text-primary uppercase tracking-wide mt-1">Kurumsal</li>
-                  <li>
-                    <Link href="/hizmet/ofis-tasimaciligi" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700">
-                      Ofis Taşımacılığı
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/hizmet/fabrika-tasimaciligi" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700">
-                      Fabrika Taşımacılığı
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/hizmet/hastane-tasimaciligi" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700">
-                      Hastane Taşımacılığı
-                    </Link>
-                  </li>
+                  {SERVICE_MENU_GROUPS.map((group) => (
+                    <li key={group.id}>
+                      <div className="py-1 px-3 text-xs font-semibold text-primary uppercase tracking-wide">
+                        {group.title}
+                      </div>
+                      <ul>
+                        {group.items.map((service) => (
+                          <li key={service.slug}>
+                            <Link
+                              href={`/hizmet/${service.slug}`}
+                              onClick={onClose}
+                              className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm text-gray-700"
+                            >
+                              {service.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
                   <li>
                     <Link href="/hizmetlerimiz" onClick={onClose} className="block py-2 px-3 hover:bg-gray-100 rounded-md transition text-sm font-medium text-primary">
                       Tüm Hizmetler →

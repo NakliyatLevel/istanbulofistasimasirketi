@@ -1,4 +1,7 @@
+import { config } from 'dotenv'
 import { PrismaClient } from '@prisma/client'
+
+config({ path: '.env.local' })
 
 const prisma = new PrismaClient()
 
@@ -9,192 +12,188 @@ async function main() {
     {
       slug: 'ucretsiz-ekspertiz',
       title: 'Ücretsiz Ekspertiz',
-      description: 'Taşınmadan önce uzman ekibimiz eşyalarınızı yerinde inceler. Eşya hacmi, asansör boyutu ve merdiven açısı yerinde ölçülür; size şeffaf ve sabit bir teklif sunulur.',
-      metaTitle: 'Ücretsiz Ekspertiz | Yerinde Nakliyat Keşfi ve Fiyat Tespiti',
-      metaDescription: 'Ücretsiz ekspertiz hizmetiyle taşınma maliyetinizi önceden netleştirin. Uzman yerinde ölçüm yapar, yazılı teklif sunar. Sürpriz ek ücret yoktur.',
+      description: 'Yerinde yapılan ücretsiz ekspertizle hacim hesapları, izin süreçleri ve zaman planı taşınmadan önce netleşir; İstanbul Ofis Taşıma Şirketi yazılı teklifini sürprizsiz sunar.',
+      metaTitle: 'Ücretsiz Ekspertiz | İstanbul Ofis Taşıma Şirketi Yerinde Keşif',
+      metaDescription: 'Ücretsiz ekspertizle eşya hacmi, izin gereklilikleri ve maliyet kalemleri ölçülerek sabit teklif hazırlanır. Dijital rapor ve görsel envanter aynı gün paylaşılır.',
       icon: 'ClipboardList',
       order: 1,
-      content: `<h2>Fiyat Söylenmeden Önce <em>Eviniz Görülmeli</em></h2>
-<p>Taşınma bütçesi çoğunlukla telefon başında netleşir. Oysa asansör ölçüsü, merdiven açısı ve kırılgan mobilyaların hacmi hiçbir sözden tam okunamaz. <em>Ekspertiz ziyareti</em> bu belirsizliği baştan kapatır.</p>
-<p>Uzman ekip kapıdan girer; her odayı tek tek ölçer, notunu kâğıda geçirir. <strong>Ortaya çıkan teklif değişmez</strong> — taşıma günü de aynı rakam geçerlidir.</p>
-<h2>Ziyarette <u>İncelenen Her Nokta</u></h2>
+      content: `<h2>Yerinde Analizle Net Planlama</h2>
+<p>İstanbul Ofis Taşıma Şirketi'nden uzman bir ekip, taşınmadan önce adresinize gelerek her odanın metrekaresini, yük asansörünü ve park alanını ölçer. Böylece telefon görüşmelerinde fark edilemeyen detaylar tespit edilir ve teklif kalemleri gerçek verilere dayanır.</p>
+<p>Ziyaret sırasında lazer metre, eğim sensörü ve dijital envanter uygulaması aynı anda kullanılır. Her mobilya fotoğraflanır, hassas parçalar işaretlenir ve hangi paketleme tekniğinin uygulanacağı rapora eklenir.</p>
+<h3>Ekspertiz Adımlarımız</h3>
+<p>Keşif; yalnızca eşya saymak değil, aynı zamanda yönetim prosedürlerini, vinç gereksinimini ve enerji hattı durumunu analiz etmektir. Aşağıdaki kontrol listesi standart adımlarımızı gösterir.</p>
 <ul>
-<li>Eşya türü, adet ve tahmini toplam hacim</li>
-<li>Asansör iç boyutu ve azami yük kapasitesi</li>
-<li>Bina giriş kapısı genişliği ile koridor dönüş açısı</li>
-<li>Cam, ayna ve tablo gibi kırılabilir parçalar ayrıca not edilir</li>
-<li>Söküm gerektiren mobilyalar ve gerekli alet listesi</li>
-<li>Yeni adreste montaj gerektirecek ürünler</li>
+<li>Asansör çalışma saatleri ve kapasitesi yönetimden yazılı olarak doğrulanır</li>
+<li>Merdiven dönüş açıları ölçülür, geniş mobilyalar için alternatif güzergâh çıkarılır</li>
+<li>Kırılgan, yüksek değerli ve sigorta kapsamı genişletilmesi gereken eşyalar işaretlenir</li>
+<li>Teslim adresindeki park yasağı, yol kapanması veya vinç platformu ihtiyacı kaydedilir</li>
 </ul>
-<h2>Teklif Yöntemi <strong>Doğruluk Karşılaştırması</strong></h2>
-<table><thead><tr><th>Yöntem</th><th>Fiyat Doğruluğu</th><th>Sürpriz Ek Ücret</th><th>Yazılı Garanti</th></tr></thead><tbody>
-<tr><td>Telefon tahmini</td><td>Düşük</td><td>Yüksek risk</td><td>Hayır</td></tr>
-<tr><td>Fotoğraf incelemesi</td><td>Orta</td><td>Orta risk</td><td>Kısmi</td></tr>
-<tr><td>Yerinde ekspertiz</td><td>Çok yüksek</td><td>Sıfır</td><td>Evet</td></tr>
+<p>Ekspertiz formu doldurulduktan sonra saha ekibi ile operasyon merkezi arasında fotoğraf ve not paylaşımı yapılır; böylece taşıma günü herkes aynı bilgiyi kullanır.</p>
+<h3>Fiyatlama Doğruluk Tablosu</h3>
+<p>Yerinde ekspertiz yapılmadığında fiyat sapmaları kaçınılmazdır. Karşılaştırma tablosu farklı yöntemlerin riskini gösterir.</p>
+<table><thead><tr><th>Yöntem</th><th>Hata Payı</th><th>Ek Ücret Riski</th><th>Müşteri Memnuniyeti</th></tr></thead><tbody>
+<tr><td>Telefon tahmini</td><td>%35</td><td>Çok yüksek</td><td>Düşük</td></tr>
+<tr><td>Fotoğraf paylaşımı</td><td>%18</td><td>Orta</td><td>Orta</td></tr>
+<tr><td>Yerinde ekspertiz</td><td>%3</td><td>Sıfır</td><td>Çok yüksek</td></tr>
 </tbody></table>
-<h2><em>Randevu Günü</em> Hazırlığı</h2>
+<p>Tablodaki fark, keşif ziyaretinin yalnızca fiyat değil, sözleşme güvenliği açısından da vazgeçilmez olduğunu kanıtlar.</p>
+<h3>Randevuya Hazırlık Rehberi</h3>
+<p>Ekspertizden maksimum verim almak için küçük hazırlıklar yeterlidir. Aşağıdaki maddeler sürenin kısalmasını ve raporun daha kapsamlı olmasını sağlar.</p>
 <ol>
-<li>Tüm oda kapılarını açık bırakın; uzman her köşeyi görmelidir</li>
-<li>Depo, balkon ve bodrum eşyalarını önceden listeleyin</li>
-<li>Taşımayı düşünmediğiniz parçaları belirtin veya ayırın</li>
-<li>Taşınma tarihi tercihinizi ve yedek günleri hazırlayın</li>
-<li>Aklınızdaki soruları yazılı not alın; uzman yanıtlar</li>
+<li>Taşınmayacak eşyaları ayrı bir alanda toplayın ve etiketi belirtin</li>
+<li>Bodrum, depo ve balkon gibi alanların anahtarlarını hazır tutun</li>
+<li>Yönetim iletişim bilgilerini ve asansör kullanım izinlerini paylaşın</li>
+<li>Tercih ettiğiniz taşınma tarihlerini ve alternatif günleri not edin</li>
 </ol>
-<h2>Teklifte <strong>Hangi Kalemler Yer Alır?</strong></h2>
-<p>Ziyaret tamamlandıktan sonra <u>24 saat içinde</u> yazılı teklif iletilir. Araç tipi, ekip büyüklüğü, çalışma süresi ve her hizmet kalemi ayrı satırda gösterilir. Hiçbir rakam açıklanmadan geçilmez.</p>
-<p>İmzalanan teklife sonradan ek ücret yansıtılamaz. <em>Bu güvence</em>, ekspertiz yapan firmayla yapmayan firma arasındaki en somut farkı oluşturur.</p>`,
+<p>Ziyaret tamamlandığında dijital rapor aynı gün e-posta ve WhatsApp üzerinden gönderilir. Rapor, teklif onaylandığında otomatik olarak sözleşmeye dönüşür ve tüm ekiplerle paylaşılır.</p>`
     },
     {
       slug: 'sozlesmeli-nakliyat',
       title: 'Sözleşmeli Nakliyat',
-      description: 'Taşıma günü yaşanan fiyat baskısı, kayıp eşya iddiaları ve sorumluluk tartışmalarının tek kalkanı imzalı sözleşmedir. Yazılı taahhüt olmadan yapılan nakliyat her iki taraf için belirsizliktir.',
-      metaTitle: 'Sözleşmeli Nakliyat | Yasal Güvenceli Evden Eve Taşıma',
-      metaDescription: 'Sözleşmeli nakliyatta fiyat garantisi, sorumluluk kapsamı ve tazminat şartları yazılı olarak belirlenir. Hukuki güvence ile taşının.',
+      description: 'İstanbul Ofis Taşıma Şirketi her taşıma için tarafların sorumluluğunu, sigorta kapsamını ve teslim saatini yazılı sözleşmeyle garanti altına alır; sürpriz ücretlere izin vermez.',
+      metaTitle: 'Sözleşmeli Nakliyat | İstanbul Ofis Taşıma Şirketi Güvence Paketi',
+      metaDescription: 'Sözleşmeli nakliyatla fiyat, hizmet kapsamı, sigorta limiti ve tazminat süreçleri hukuki güvenceye alınır. Dijital imza ve QR doğrulama desteklenir.',
       icon: 'FileText',
       order: 2,
-      content: `<h2>Sözlü Anlaşma <em>Taşıma Günü</em> Geçersizdir</h2>
-<p>Araç yola çıktıktan sonra ortaya çıkan itirazlar, sözlü anlaşmalarla hiçbir mercide geçer sayılmaz. Kayıp ya da hasarlı eşya için hukuki yola başvurmak istediğinizde <strong>elinizde yazılı belge olmalıdır.</strong></p>
-<p>Türkiye'de her yıl binlerce nakliyat uyuşmazlığı tüketici mahkemelerine taşınır. <em>Neredeyse tamamı</em> imzasız süreçlerden doğar. Yazılı sözleşme bu tartışmayı daha başlamadan bitirir.</p>
-<h2>Sözleşmenin <u>Olmazsa Olmaz Maddeleri</u></h2>
+      content: `<h2>Yazılı Taahhüt Olmadan Taşınma Olmaz</h2>
+<p>İstanbul Ofis Taşıma Şirketi, her projeyi hukuki zemine oturtmak için sözleşmesiz işe başlamaz. Yazılı taahhüt, ücret artışı veya sorumluluk belirsizliği gibi krizleri daha oluşmadan ortadan kaldırır.</p>
+<p>Sözleşmede tarih, saat, ekip büyüklüğü, kullanılacak araç ve sigorta limiti gibi tüm ayrıntılar yer alır. Böylece hizmet kapsamı operasyon gününde tek bir cümleyle bile değiştirilemez.</p>
+<h3>Zorunlu Maddeler</h3>
+<p>Hazırladığımız sözleşmeler fiyat bilgisinin yanı sıra operasyonel detayları da içerir. Aşağıdaki maddeler her anlaşmanın temelini oluşturur.</p>
 <ul>
-<li>Taşıma tarihi, başlangıç saati ve teslim penceresi açıkça yazılmış</li>
-<li>Alım ve teslim adresi tam adresle belirtilmiş</li>
-<li>Toplam ücret ve ödeme yöntemi net rakamlarla yer almış</li>
-<li>Hasar durumunda sorumluluk sınırı tanımlanmış</li>
-<li>İptal ve erteleme koşulları ayrı maddede açıklanmış</li>
-<li>Taşınan eşya listesi ek belge olarak sözleşmeye eklenmiş</li>
+<li>Taşıma adresleri mahalle ve kapı numarasına kadar yazılır</li>
+<li>Söküm, montaj, vinç ve depolama gibi ek hizmetler ayrı satırlarda belirtilir</li>
+<li>İptal ve erteleme koşulları, hava durumu senaryoları dahil açıklanır</li>
+<li>Teslim sonrası hasar bildirimi için kullanılacak iletişim kanalı ve süre tanımlanır</li>
 </ul>
-<h2>Standart ve <strong>Güçlendirilmiş Sözleşme</strong> Farkı</h2>
-<table><thead><tr><th>Kapsam</th><th>Standart</th><th>Güçlendirilmiş</th></tr></thead><tbody>
-<tr><td>Fiyat garantisi</td><td>Var</td><td>Var + ek ücret yasağı</td></tr>
-<tr><td>Hasar tazminatı</td><td>Sınırlı</td><td>Tam rayiç değer</td></tr>
-<tr><td>Eşya listesi</td><td>Genel</td><td>Kalemli ve çift imzalı</td></tr>
-<tr><td>İptal hakkı</td><td>48 saat</td><td>72 saat + iade garantisi</td></tr>
+<p>Bu maddeler, tarafların beklentisinin aynı sayfada buluşmasını sağlar ve tazminat süreçlerinde referans alınır.</p>
+<h3>Sözleşme Tipleri Tablosu</h3>
+<p>Farklı ihtiyaçlara uygun üç model sözleşme sunuyoruz. Karşılaştırma tablosu hangi paketin size uygun olduğunu hızlıca gösterecek.</p>
+<table><thead><tr><th>Özellik</th><th>Standart</th><th>Kurumsal</th><th>Premium</th></tr></thead><tbody>
+<tr><td>Fiyat Garantisi</td><td>Var</td><td>Var</td><td>Var + sabit kur</td></tr>
+<tr><td>Sigorta Limiti</td><td>250.000 TL</td><td>500.000 TL</td><td>1.000.000 TL</td></tr>
+<tr><td>İptal Hakkı</td><td>48 saat</td><td>72 saat</td><td>96 saat</td></tr>
+<tr><td>Dijital Arşiv</td><td>Evet</td><td>Evet</td><td>Evet + QR doğrulama</td></tr>
 </tbody></table>
-<h2>İmzalamadan Önce <em>Kontrol Listesi</em></h2>
+<p>Kurumsal ve premium sözleşmelerde QR kod ile dijital doğrulama yapılır; böylece sahadaki ekip belgeyi saniyeler içinde teyit edebilir.</p>
+<h3>İmzadan Önce Kontrol</h3>
+<p>Sözleşme imzalamadan önce kısa bir kontrol listesi hazırlamak süreci güvenli kılar.</p>
 <ol>
-<li>Firmanın vergi numarası ve ticari adresi sözleşmede yer alıyor mu?</li>
-<li>Sigorta poliçe numarası açıkça yazıyor mu?</li>
-<li>Ek hizmet ücretleri tek tek listelenmiş mi?</li>
-<li>Teslimatta hasarın nasıl raporlanacağı yazılı mı?</li>
-<li>Her sayfayı okuyun; imzanız o bilgiden haberdar olduğunuzu teyit eder</li>
+<li>Vergi numarası ve ticaret sicil no şirket bilgileriyle eşleşiyor mu?</li>
+<li>Sigorta poliçe numarası ve teminat limiti açıkça yazılmış mı?</li>
+<li>KDV oranı, ödeme planı ve ek hizmet tutarları rakamsal mı?</li>
 </ol>
-<h2>Anlaşmazlık Olursa <strong>İlk 48 Saat</strong></h2>
-<p>Sözleşmeli bir nakliyatta hasar yaşandığında fotoğraf ve tutanak alınmalıdır. <u>Firma yazılı olarak</u> bildirilmeli; tazminat talebi bu belgelere dayanarak açılmalıdır. 48 saati geçiren bildirimler hukuki geçerliliğini yitirebilir.</p>
-<p>Tüketici Hakem Heyeti'ne başvuru için alt sınır her yıl güncellenir. Daha yüksek talepler asliye hukuk mahkemesine taşınır. <em>Sözleşmesiz</em> hiçbir davada mahkeme firmanın sorumluluğunu otomatik kabul etmez.</p>`,
+<p>Sözleşmenin son kopyası dijital arşive yüklenir ve müşteriye PDF olarak gönderilir. Gerekirse mobil cihazdan QR kodu okutularak belge doğrulanabilir, böylece farklı ekiplerle paylaşırken bile güvenlik bozulmaz.</p>`
     },
     {
       slug: 'sigortali-nakliyat',
       title: 'Sigortalı Nakliyat',
-      description: 'Taşıma sırasında kırılan, çizilen ya da kaybolan bir eşya için tazminat alabilmek ancak geçerli bir poliçeyle mümkündür. Poliçesiz nakliyat tüm riski size bırakır.',
-      metaTitle: 'Sigortalı Nakliyat | Taşıma Sigortası ve Tazminat Güvencesi',
-      metaDescription: 'Sigortalı nakliyatta kırılma, kayıp ve hasar tazminatı güvencesi. Poliçe kapsamı, hasar bildirimi ve tazminat süreci hakkında bilgi alın.',
+      description: 'Kırılma, kayıp veya gecikme risklerine karşı tüm eşyalarınızı poliçe güvencesine alan sigortalı nakliyat paketimiz, İstanbul Ofis Taşıma Şirketiyle her senaryoyu güvence altına alır.',
+      metaTitle: 'Sigortalı Nakliyat | İstanbul Ofis Taşıma Şirketi Poliçe Koruması',
+      metaDescription: 'Sigortalı nakliyat ile zorunlu sorumluluk, tam kapsam ve değer beyan poliçeleri tek dosyada sunulur. Hasar bildirimi ve tazminat süreçleri şeffaf yönetilir.',
       icon: 'Shield',
       order: 3,
-      content: `<h2>Kırılan Vazo <em>Sadece Para Değil</em>, Güvencesizliktir</h2>
-<p>Taşıma sırasında zarar gören bir eşya için tazminat alabilmek, ancak geçerli bir poliçeyle mümkündür. <em>Poliçesiz nakliyatta</em> tüm sorumluluk size kalır; firma kusuru ispat edilemezse karşılık alamazsınız.</p>
-<p>Öte yandan her sigorta aynı değildir. <strong>Zorunlu sorumluluk sigortası</strong> yalnızca firmanın kusurunu karşılar. Tam nakliyat poliçesi ise kaza, sel ve yangın gibi dış riskleri de içerir.</p>
-<h2>Sigorta Türleri <u>Karşılaştırması</u></h2>
-<table><thead><tr><th>Sigorta Türü</th><th>Kapsam</th><th>Tazminat Tabanı</th><th>Ekstra Maliyet</th></tr></thead><tbody>
-<tr><td>Zorunlu sorumluluk</td><td>Firma kusuru</td><td>Yasal sınır</td><td>Dahil</td></tr>
-<tr><td>Tam nakliyat sigortası</td><td>Her türlü hasar</td><td>Rayiç değer</td><td>%0,5–1,5</td></tr>
-<tr><td>Değer beyan sigortası</td><td>Beyan edilen miktar</td><td>Beyan değeri</td><td>Değişken</td></tr>
+      content: `<h2>Tam Kapsamlı Güvence</h2>
+<p>Sigortalı nakliyat paketi, kırılmadan gecikmeye kadar tüm risklere finansal koruma sağlar. Poliçe dosyası sözleşmeyle birlikte saklanır ve İstanbul Ofis Taşıma Şirketi ekipleri her adımı sigorta şartlarına göre planlar.</p>
+<p>Zorunlu sorumluluk sigortasına ek olarak tam kapsam veya değer beyan poliçesi düzenlenebilir. Böylece antika koleksiyonlarla yüksek teknoloji ekipmanları aynı güvence altında taşınır.</p>
+<h3>Sigorta Türleri Tablosu</h3>
+<p>Hangi poliçeyi seçeceğinizi bilemiyorsanız aşağıdaki tablo kapsama dair hızlı bir özet sunar.</p>
+<table><thead><tr><th>Poliçe</th><th>Kapsam</th><th>Teminat Limiti</th><th>Önerilen Kullanım</th></tr></thead><tbody>
+<tr><td>Zorunlu sorumluluk</td><td>Firma kusuru</td><td>Yasal limit</td><td>Standart ev taşımaları</td></tr>
+<tr><td>Tam kapsam</td><td>Kaza, yangın, sel, vandalizm</td><td>Rayiç değer</td><td>Kurumsal ofisler</td></tr>
+<tr><td>Değer beyan</td><td>Beyan edilen kalemler</td><td>Kalem bazlı</td><td>Sanat, müzik, koleksiyon</td></tr>
 </tbody></table>
-<h2>Poliçe Almadan Önce <strong>Sorulacaklar</strong></h2>
+<p>Tablo, ek prim ödeyerek hangi riskleri teminat altına alabileceğinizi ve limitleri nasıl genişleteceğinizi gösterir.</p>
+<h3>Poliçe Öncesi Sorular</h3>
+<p>Poliçeyi imzalamadan önce mutlaka şu sorulara cevap alın:</p>
 <ul>
-<li>Antika ve sanat eserleri ayrıca tanımlanmış mı?</li>
-<li>Elektronik cihazlar için iç hasar teminatı var mı?</li>
-<li>Reasürans şirketinin adı poliçede açıkça yazıyor mu?</li>
-<li>Depolama süresi kapsama dahil mi?</li>
-<li>Hasar bildirimi için süre sınırı kaç gün?</li>
+<li>Depolama veya bekleme süresi kapsama dahil mi, değilse nasıl eklenir?</li>
+<li>Ambalajlama hataları veya personel kusurları poliçe tarafından nasıl değerlendirilir?</li>
+<li>Hasar ihbarı için süre sınırı kaç gündür ve hangi kanallar kullanılmalıdır?</li>
 </ul>
-<h2>Hasar Durumunda <em>İzlenecek Adımlar</em></h2>
+<p>Bu sorular poliçenin beklentilerinizi karşılayıp karşılamadığını netleştirir.</p>
+<h3>Hasar Prosedürü</h3>
+<p>Her ekipte dijital tutanak sistemi bulunur. Teslimat sonrası fark edilen bir problem aşağıdaki akışla raporlanmalıdır.</p>
 <ol>
-<li>Teslim anında tüm eşyaları ekip önünde tek tek kontrol edin</li>
-<li>Her hasarı fotoğrafla belgeleyin; zaman damgasına dikkat edin</li>
-<li>Taşıma firmasına 48 saat içinde yazılı bildirim yapın</li>
-<li>Sigorta şirketine hasar ihbar formu doldurun</li>
-<li>Tazminat değerleme için eksper randevusu talep edin</li>
+<li>Hasarı teslim anında ekibe bildirip fotoğraf çekin</li>
+<li>48 saat içinde müşteri temsilcimize yazılı ihbar gönderin</li>
+<li>Sigorta şirketine eksper talebi açın, randevuyu onaylayın</li>
 </ol>
-<h2>Tazminat Sürecinde <strong>Kritik Süreler</strong></h2>
-<p>Hasar bildirimi 48 saati geçerse tazminat hakkı önemli ölçüde zayıflar. <u>Eksper değerleme</u> genellikle 5 iş günü içinde tamamlanır. Ödeme kararı ise poliçeye göre 15 ile 30 iş günü arasında çıkar.</p>
-<p>Yüksek değerli eşyalar için fatura veya bağımsız değerleme raporu önceden hazırlanmalıdır. <em>Bu belgeler</em> süreci hızlandırır ve itiraz sürecini gereksiz kılar.</p>`,
+<p>Eksper raporu genellikle beş iş gününde tamamlanır; ödeme süreci poliçe tipine göre 15-30 iş günü sürer. Tüm belgeler dijital arşive işlendiği için dosyanın durumu panelden anlık takip edilebilir.</p>`
     },
     {
       slug: 'asansorlu-nakliyat',
       title: 'Asansörlü Nakliyat',
-      description: 'Vinç asansör sistemi, merdivenden çıkarılması imkânsız olan büyük mobilyaları dışarıdan kaldırarak taşır. Bina içi asansörü yetersiz kalan her taşıma için standart çözümdür.',
-      metaTitle: 'Asansörlü Nakliyat | Vinç Asansör ile Büyük Eşya Taşıma',
-      metaDescription: 'Asansörlü nakliyatta vinç asansör sistemi büyük mobilyaları hızlı ve hasarsız taşır. Site koordinasyonu ve sigortalı operasyon dahildir.',
+      description: 'Bina içi asansör veya merdivenlerin yetersiz kaldığı durumlarda mobil vinç sistemlerimizle geniş hacimli eşyaları dakikalar içinde güvenle taşıyoruz.',
+      metaTitle: 'Asansörlü Nakliyat | İstanbul Ofis Taşıma Şirketi Vinç Operasyonu',
+      metaDescription: 'Asansörlü nakliyat hizmetiyle mobil vinç, rüzgar analizi ve site koordinasyonu tek plan dahilinde yönetilir. Büyük eşyalar çiziksiz taşınır.',
       icon: 'ArrowUpDown',
       order: 4,
-      content: `<h2>Koltuk Asansöre <em>Sığmıyorsa</em> Vinç Devreye Girer</h2>
-<p>Standart bir bina asansörünün iç ölçüsü 100 × 130 santimetre civarındadır. Üçlü köşe koltuk ya da king-size baza bu alana sığmaz. <em>Vinç asansör</em> bu durumda pencere veya balkon önünde konumlanır; eşyayı dışarıdan kaldırır.</p>
-<p>Kurulum göründüğü kadar basit değildir. <strong>Araç parkı, vinç açısı ve pencere erişimi</strong> önceden hesaplanmazsa operasyon gün içinde durabilir.</p>
-<h2>Vinç Asansör Gerektiren <u>Eşya Türleri</u></h2>
+      content: `<h2>Dışarıdan Erişimle Hızlı Taşıma</h2>
+<p>Merdiven boşluklarının dar olduğu konutlarda veya ticari alanlarda büyük mobilyaları indirmek çoğu zaman mümkün değildir. Mobil vinç sistemlerimiz pencere önünden erişim sağlayarak eşyayı doğrudan araca indirir.</p>
+<p>Vinç planlaması yapılırken sokak genişliği, bina cephesi ve enerji hatları analiz edilir. İstanbul Ofis Taşıma Şirketi operasyon ekibi site yönetiminden izin alır ve komşulara bilgilendirme yapar.</p>
+<h3>Hangi Eşyalar İçin?</h3>
+<p>Vinç gerektiren eşyaları önceden bilmek zaman kazandırır. Listede en sık dışarıdan indirdiğimiz parçalar bulunur.</p>
 <ul>
-<li>L ve U köşe koltuk takımları; bina asansörüne sığmayan en yaygın parça</li>
-<li>King-size yatak kafalığı ve baza çerçeveleri</li>
-<li>Piyano ve org gibi ağır müzik aletleri</li>
-<li>Özel ölçülü dolap sistemleri ve büyük vitrinler</li>
-<li>Jakuzi, küvet ve ankastre mutfak üniteleri</li>
+<li>Köşe koltukları, king size yatak setleri, geniş bazalar</li>
+<li>Piyano, davul seti, profesyonel ses sistemleri</li>
+<li>Tek parça cam vitrinler, modüler dolap panelleri</li>
+<li>Jakuzi, sauna kabini, ağır beyaz eşya ve kasalar</li>
 </ul>
-<h2>Taşıma Yöntemi <strong>Karşılaştırması</strong></h2>
-<table><thead><tr><th>Yöntem</th><th>Büyük Eşya</th><th>Merdiven Hasarı</th><th>Ortalama Süre</th></tr></thead><tbody>
-<tr><td>Elle merdiven</td><td>Sınırlı</td><td>Yüksek risk</td><td>Uzun</td></tr>
-<tr><td>Bina asansörü</td><td>Orta</td><td>Orta risk</td><td>Orta</td></tr>
-<tr><td>Vinç asansör</td><td>Tam çözüm</td><td>Sıfır</td><td>Kısa</td></tr>
+<p>Bu eşyalar için merdiven kullanmak hem zaman kaybı hem de hasar riski yaratır; vinç asansör çözümü ise dakikalar içinde sonuç verir.</p>
+<h3>Yöntem Karşılaştırması</h3>
+<p>Hangi yöntemin tercih edileceğine karar verirken hız, güvenlik ve personel ihtiyacını değerlendirmek gerekir.</p>
+<table><thead><tr><th>Yöntem</th><th>Süre</th><th>Hasar Riski</th><th>Personel</th></tr></thead><tbody>
+<tr><td>Merdiven taşıma</td><td>Uzun</td><td>Yüksek</td><td>6-8 kişi</td></tr>
+<tr><td>Bina asansörü</td><td>Orta</td><td>Orta</td><td>4 kişi</td></tr>
+<tr><td>Vinç asansör</td><td>Kısa</td><td>Sıfır</td><td>3 kişi + operatör</td></tr>
 </tbody></table>
-<h2>Site Yönetimi <em>Koordinasyonu</em></h2>
+<p>Tablodan görüldüğü gibi vinç seçeneği, geniş hacimli eşyalarda hem süreyi kısaltır hem de bina içi yüzeyleri korur.</p>
+<h3>Site Koordinasyonu</h3>
+<p>Asansörlü nakliyatın sorunsuz ilerlemesi için belediye ve site yönetimiyle eşgüdüm şarttır. Operasyon öncesi aşağıdaki adımları izleriz.</p>
 <ol>
-<li>Taşınma tarihi belirlenir belirlenmez site yönetimine bildirim yapılır</li>
-<li>Vinç asansör kullanım saati yöneticiyle önceden netleştirilir</li>
-<li>Araç ve vinç için park alanı en az bir gün önceden ayrılır</li>
-<li>Komşular bilgilendirilir; giriş-çıkış geçici olarak etkilenebilir</li>
-<li>Bina sigortasının vinç kullanımını kapsayıp kapsamadığı sorulur</li>
+<li>Park alanı şerit ile kapatılır, güvenlik bariyeri ve yönlendirme tabelaları yerleştirilir</li>
+<li>Vinç kurulumu sırasında enerji, internet ve doğal gaz hatlarına uzaklık kontrol edilir</li>
+<li>Rüzgar ve hava durumu meteoroloji API'si ile canlı takip edilir</li>
 </ol>
-<h2>Operasyon Günü <strong>Nasıl İlerler?</strong></h2>
-<p>Ekip sabahın erken saatinde gelir; vinç konumunu ayarlar. Küçük parçalar bina asansörüyle, büyük parçalar dışarıdan kaldırılır. <u>Her parça askıya alınmadan önce</u> bağlantı sistemi kontrol edilir.</p>
-<p>Tüm operasyon iki saatte tamamlanabilir. <em>Merdiven taşımasının</em> yarısı kadar sürer; merdiven ve duvarı hasarsız terk eder.</p>`,
+<p>Operasyon günü platform her parça öncesi kontrol edilir, bağlantı noktaları çift kilitlenir ve iç ekip ile dış ekip telsizle senkronize çalışır. Böylece mobil vinç kullanımı iki saatten kısa sürer ve bina içi yüzeyler çiziksiz kalır.</p>`
     },
     {
       slug: 'ambalaj-paketleme',
       title: 'Ambalaj & Paketleme',
-      description: 'Taşıma hasarlarının büyük bölümü yolda değil, yükleme sırasında başlar. Doğru malzeme, doğru teknik ve doğru sıra uygulandığında eşyalarınız bitmemiş gibi çıkar.',
-      metaTitle: 'Ambalaj ve Paketleme | Profesyonel Nakliyat Ambalaj Hizmeti',
-      metaDescription: 'Nakliyat ambalajında çift kat streç film, balonlu naylon ve tahta kasa ile kırılmaz paketleme hizmeti. Tüm eşya türleri için özel çözüm.',
+      description: 'Profesyonel ambalaj hizmetimiz; çift katmanlı koruma, renk kodlu etiketleme ve nem kontrollü depolama çözümleriyle eşyalarınızı çiziksiz taşır.',
+      metaTitle: 'Ambalaj ve Paketleme | İstanbul Ofis Taşıma Şirketi Profesyonel Koruma',
+      metaDescription: 'Ambalaj & paketleme hizmetiyle eşya tipine göre malzeme seçimi, tablo ve elektronik kasaları, renk kodlu etiket sistemi ve açma planı hazırlanır.',
       icon: 'Package',
       order: 5,
-      content: `<h2>Hasar Başlamadan <em>Ambalajda</em> Önlenir</h2>
-<p>Taşıma hasarlarının büyük bölümü yolda değil, yükleme sırasında başlar. Doğru sabitlenmemiş bir vazo ilk frende sürüklenir. <em>Kırılma anı</em> çoğunlukla rampadan çıkarken yaşanır; araç henüz hareket etmemiştir.</p>
-<p>Malzeme kalitesi, katman sayısı ve eşyalar arası dolgu yoğunluğu belirleyicidir. <strong>Gazete kâğıdı ile balonlu naylon</strong> arasındaki fark, taşınma sonrası açılan ilk kutuda ortaya çıkar.</p>
-<h2>Eşyaya Göre <u>Doğru Ambalaj Malzemesi</u></h2>
-<table><thead><tr><th>Eşya</th><th>İlk Katman</th><th>İkinci Katman</th><th>Dış Koruma</th></tr></thead><tbody>
-<tr><td>Cam ve porselen</td><td>Köpük folyosu</td><td>Balonlu naylon</td><td>Tahta kasa</td></tr>
-<tr><td>Mobilya yüzeyi</td><td>Tekstil battaniye</td><td>Çift kat streç</td><td>Köşe koruyucu</td></tr>
-<tr><td>Elektronik cihaz</td><td>Antistatik torba</td><td>Köpük tampon</td><td>Sert karton</td></tr>
-<tr><td>Tekstil ürünleri</td><td>—</td><td>Vakumlu torba</td><td>Dayanıklı naylon çuval</td></tr>
-<tr><td>Kitap ve evrak</td><td>Silika jel</td><td>Şeffaf naylon</td><td>Asitsiz mukavva</td></tr>
+      content: `<h2>Profesyonel Malzemeyle Başlayan Güvenlik</h2>
+<p>Taşıma hasarlarının çoğu yolculukta değil, paketleme aşamasında ortaya çıkar. İstanbul Ofis Taşıma Şirketi her eşya türü için doğru malzemeyi seçerek riskleri en başta ortadan kaldırır ve paketleme sürecini raporlarla belgelendirir.</p>
+<p>Her oda için ayrı kutu setleri hazırlanır, kutular ağırlık limitlerine göre doldurulur ve nem kontrolü için silika jel kullanılır. Sanat eserleri mikroklima kasalarına yerleştirilir, elektronikler antistatik torbalara alınır.</p>
+<h3>Malzeme Matrisi</h3>
+<p>Eşyaya göre malzeme seçmek için hazırladığımız matris, paketleme sırasını planlamayı kolaylaştırır.</p>
+<table><thead><tr><th>Eşya Türü</th><th>İlk Katman</th><th>İkinci Katman</th><th>Dış Koruma</th></tr></thead><tbody>
+<tr><td>Cam ve porselen</td><td>Köpük folyo</td><td>Balonlu naylon</td><td>Ahşap kasa</td></tr>
+<tr><td>Mobilya yüzeyi</td><td>Keçe battaniye</td><td>Çift streç</td><td>Köşe koruma</td></tr>
+<tr><td>Elektronik</td><td>Antistatik torba</td><td>Köpük blok</td><td>Sert kutu</td></tr>
+<tr><td>Tekstil</td><td>Vakum torba</td><td>Şeffaf naylon</td><td>Nefes alan çuval</td></tr>
 </tbody></table>
-<h2>Kendi Paketleme mi, <strong>Uzman Ambalaj mı?</strong></h2>
+<p>Tablo sayesinde hangi katmanın önce uygulanacağı ve dış korumanın ne olacağı netleşir.</p>
+<h3>Etiketleme ve Listeler</h3>
+<p>Renk kodlu etiket sistemiyle her kutu gideceği odayı belirtir; QR kodlu listeler ise müşteri panelinden anlık görülebilir.</p>
 <ul>
-<li>Evde bulunan malzeme çoğunlukla darbeye dayanıksız kalır</li>
-<li>Yetersiz katman sayısı kırılgan parçaları koruyamaz</li>
-<li>Yanlış etiketleme taşıma sırasında yönlendirme hatasına yol açar</li>
-<li>Uzman ambalajda hasar sigortası poliçeye dahil edilebilir</li>
-<li>Profesyonel ekip bir evi kendi başınıza yapacağınız sürenin üçte birinde paketler</li>
+<li>Kırmızı: kırılacaklar, mavi: elektronik, yeşil: tekstil, sarı: mutfak</li>
+<li>Her etikette kutu numarası, içerik özeti ve ağırlık bilgisi yer alır</li>
+<li>Panel üzerinden arama yaparak ihtiyaç duyduğunuz kutuyu saniyeler içinde bulursunuz</li>
 </ul>
-<h2>Paketleme <em>Sırasının</em> Kuralları</h2>
+<p>Bu sistem karışıklığı önler ve açma sırasını planlamayı kolaylaştırır.</p>
+<h3>Paketleme Akışı</h3>
+<p>Operasyon günü ekip önce demonte edilmesi gereken mobilyaları söker, ardından zemin koruması serer. Süreç aşağıdaki adımlarla ilerler.</p>
 <ol>
-<li>Ağır ve sert eşyalar kutu tabanına yerleştirilir; zemin katmanı oluşturur</li>
-<li>Hafif ve kırılgan parçalar üste konur; alt baskıdan korunur</li>
-<li>Boşluklar köpük topuyla kapatılır; hareket engellenir</li>
-<li>Her kutu içeriğini belirten etiketle kapanır</li>
-<li>Kırılacak ürünlerin kutusu kırmızı bant ile ayrıştırılır</li>
+<li>Ağır eşyalar tabana yerleştirilir, boşluklar köpük topuyla doldurulur</li>
+<li>Hafif ürünler üste alınır; kutu sallandığında hareket etmemelidir</li>
+<li>Kutu kapağı kapatılmadan önce içerik listesi ve QR kodu doğrulanır</li>
 </ol>
-<h2>Yeni Evde <strong>Ambalaj Açma Sırası</strong></h2>
-<p>Kutuları rastgele açmak yerine bir sıra belirleyin. Önce <u>yatak odası kurulur</u>; geceyi geçirecek alan elde edilir. Ardından mutfak, en son oturma odası açılır.</p>
-<p>Tüm kutular açılmadan ambalaj malzemelerini dışarı çıkarmayın. <em>Kırık parçalar</em> gazete katları arasında gizli kalabilir; çöpe atılan ambalaj olası kayıp iddiasını ispatsız bırakır.</p>`,
+<p>Yeni adreste paket açma hizmeti de sunuyoruz. Ekip kutuları ilgili odalara taşır, mobilyaları kurar ve ambalaj atıklarını geri dönüşüme gönderir; böylece taşınma sonrası ilk gün düzen içinde başlar.</p>`
     },
   ]
 

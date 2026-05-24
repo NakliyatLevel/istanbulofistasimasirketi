@@ -6,6 +6,7 @@ import { Phone, Mail, Menu, ChevronDown, Facebook, Instagram, Twitter, Linkedin,
 import { Button } from '@/components/ui/button'
 import { MobileMenu } from './MobileMenu'
 import { useState } from 'react'
+import { SERVICE_MENU_GROUPS } from '@/lib/service-menu'
 
 interface HeaderProps {
   settings: Record<string, string>
@@ -145,122 +146,22 @@ export default function Header({ settings }: HeaderProps) {
               </Link>
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] bg-white border border-gray-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-6">
                 <div className="grid grid-cols-3 gap-6">
-                  {/* Bireysel Taşımacılık */}
-                  <div>
-                    <h3 className="font-bold text-primary mb-3 pb-2 border-b border-border">
-                      Bireysel Taşımacılık
-                    </h3>
-                    <ul className="space-y-2">
-                      <li>
-                        <Link href="/hizmet/ev-tasima" className="block py-1 hover:text-primary transition text-sm">
-                          Ev Taşıma
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/villa-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Villa Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/yali-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Yalı Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/parca-esya-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Parça Eşya Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/sehir-ici-nakliyat" className="block py-1 hover:text-primary transition text-sm">
-                          Şehir içi Nakliyat
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/sehirler-arasi-nakliyat" className="block py-1 hover:text-primary transition text-sm">
-                          Şehirler Arası Nakliyat
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Kurumsal Taşımacılık */}
-                  <div>
-                    <h3 className="font-bold text-primary mb-3 pb-2 border-b border-border">
-                      Kurumsal Taşımacılık
-                    </h3>
-                    <ul className="space-y-2">
-                      <li>
-                        <Link href="/hizmet/ofis-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Ofis Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/kurumsal-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Kurumsal Taşımacılık
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/fabrika-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Fabrika Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/banka-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Banka Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/fuar-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Fuar Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/hastane-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Hastane Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/konsolosluk-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Konsolosluk Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/universite-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Üniversite Taşımacılığı
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Diğer Hizmetler */}
-                  <div>
-                    <h3 className="font-bold text-primary mb-3 pb-2 border-b border-border">
-                      Diğer Hizmetler
-                    </h3>
-                    <ul className="space-y-2">
-                      <li>
-                        <Link href="/hizmet/arsiv-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Arşiv Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/muze-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Müze Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/bankamatik-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Bankamatik Taşımacılığı
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/hizmet/para-kasasi-tasimaciligi" className="block py-1 hover:text-primary transition text-sm">
-                          Para Kasası Taşımacılığı
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
+                  {SERVICE_MENU_GROUPS.map((group) => (
+                    <div key={group.id}>
+                      <h3 className="font-bold text-primary mb-3 pb-2 border-b border-border">
+                        {group.title}
+                      </h3>
+                      <ul className="space-y-2">
+                        {group.items.map((service) => (
+                          <li key={service.slug}>
+                            <Link href={`/hizmet/${service.slug}`} className="block py-1 hover:text-primary transition text-sm">
+                              {service.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
